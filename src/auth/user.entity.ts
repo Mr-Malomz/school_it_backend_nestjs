@@ -11,10 +11,13 @@ export class User extends BaseEntity {
   @Column()
   lastname: string;
 
-  @Column()
+  @Column({ nullable: true })
   role: string;
 
-  @Column('bytea')
+  @Column('varchar', { length: 11, nullable: true })
+  phoneNumber: string;
+
+  @Column('bytea', { nullable: true })
   profilePicture: string;
 
   @Column()
