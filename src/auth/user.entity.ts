@@ -1,14 +1,21 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+  BaseEntity,
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  Unique,
+} from 'typeorm';
 
 @Entity()
+@Unique(['email'])
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   userID: string;
 
-  @Column()
+  @Column({ nullable: true })
   firstname: string;
 
-  @Column()
+  @Column({ nullable: true })
   lastname: string;
 
   @Column({ nullable: true })
@@ -25,4 +32,7 @@ export class User extends BaseEntity {
 
   @Column()
   password: string;
+
+  @Column({ nullable: true })
+  salt: string;
 }
